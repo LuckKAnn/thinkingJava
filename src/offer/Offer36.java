@@ -32,7 +32,7 @@ public class Offer36 {
 
 
 
-    Node pre ,head;
+    Node pre=null ,head=null;
     public Node treeToDoublyList(Node root) {
         if(root==null) return null;
 
@@ -53,10 +53,13 @@ public class Offer36 {
         dfs(root.left);
 
         if(pre!=null){
+            //需要更改前一个结点的后向指针
+            //和本节点的前向指针
             pre.right = root;
             root.left = pre;
         }
         else{
+            //第一次的时候更新头就可以了
             head = root;
         }
         pre = root;
