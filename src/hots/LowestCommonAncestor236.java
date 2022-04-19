@@ -71,17 +71,23 @@ public class LowestCommonAncestor236 {
      * @return
      */
 
+    TreeNode ans = null;
     public TreeNode lowestCommonAncestor02(TreeNode root, TreeNode p, TreeNode q) {
 
-        return null;
+        dfs02(root,p,q);
+
+        return ans;
     }
 
-    public  boolean  dfs02(TreeNode root,TreeNode p){
-        if (root==null) return false;
-        if (root==p) return true;
-        else{
-            return dfs02(root.left,p)|| dfs02(root.right,p);
-
+    public  boolean  dfs02(TreeNode root,TreeNode p,TreeNode q){
+       if (root==null) return false;
+        if(((root==p||root==q)&&(dfs02(root.left,p,q)||dfs02(root.right,p,q)))||(dfs02(root.left,p,q)&&dfs02(root.right,p,q))){
+                ans = root;
+                return  true;
         }
+        else if (root==q||root==p){
+            return true;
+        }
+        return  false;
     }
 }

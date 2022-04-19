@@ -18,6 +18,13 @@ public class CoinChange322 {
      * @param amount
      * @return
      */
+    /**
+     * 参考: https://leetcode-cn.com/problems/coin-change/solution/javadi-gui-ji-yi-hua-sou-suo-dong-tai-gui-hua-by-s/
+     * 需要注意的，就是这道题用贪心的方式是无法解决的。不能说老是直接用大的东西去兑换就能让面值更小。
+     * @param coins
+     * @param amount
+     * @return
+     */
     public static  int coinChange(int[] coins, int amount) {
 
         int[]dp = new int[amount+1];

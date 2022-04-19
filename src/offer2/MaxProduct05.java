@@ -1,6 +1,8 @@
 package offer2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,5 +42,35 @@ public class MaxProduct05 {
             }
         }
         return  max;
+    }
+
+
+    /**
+     * 通过位掩码来做
+     * 这种方法算是比较快的了。注意，有的情况下，能用list实现的功能就不要用map。因为map底层采用链表和红黑树，其建树的时间复杂度挺高的
+     * 如果要进行随机访问，那么使用list最合适。
+     * @param words
+     * @return
+     */
+    public int maxProduct02(String[] words) {
+     List<Integer> list = new ArrayList<>();
+        for (String str : words){
+            int tmp = 0;
+            for (char c :str.toCharArray()){
+                tmp|=(1<<(c-'a'));
+            }
+           list.add(tmp);
+        }
+        int ans = 0;
+        for (int i = 0; i < words.length; i++) {
+            for (int j = i+1; j < words.length; j++) {
+                int ma1 = list.get(i);
+                int ma2 = list.get(j);
+                if ((ma1&ma2)==0)  ans = Math.max(ans,words[i].length()*words[j].length());
+            }
+
+        }
+
+        return  ans;
     }
 }

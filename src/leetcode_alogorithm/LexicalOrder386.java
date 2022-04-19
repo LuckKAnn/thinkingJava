@@ -8,6 +8,7 @@ package leetcode_alogorithm;
  */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,15 +20,30 @@ import java.util.List;
  */
 public class LexicalOrder386 {
 
-    public List<Integer> lexicalOrder(int n) {
+    public static List<Integer> lexicalOrder(int n) {
          List<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            list.add(i);
-        }
-        Collections.sort(list,(o1,o2)->{
-            return String.valueOf(o1).compareTo(String.valueOf(o2));
-        });
+        int target = 1;
 
+        while (list.size()!=n){
+            list.add(target);
+            int lastBit = target%10;
+            if (target*10<=n) target*=10;
+            else if (lastBit==9){
+                target/=10;
+                target++;
+            }
+            else if (target<n){
+                target+=1;
+            }
+            else {
+                target/=10;
+                target++;
+            }
+        }
         return list;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(LexicalOrder386.lexicalOrder(130).toArray()));
     }
 }
