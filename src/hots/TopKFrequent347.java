@@ -53,6 +53,15 @@ public class TopKFrequent347 {
         return ans;
     }
 
+    public int[] topKFrequentQucikSort(int[] nums, int k){
+        Map<Integer, Integer> mp =new HashMap<>();
+        for (int num:nums){
+            mp.put(num,mp.getOrDefault(num,0)+1);
+        }
+
+        return null;
+    }
+
 
 
 

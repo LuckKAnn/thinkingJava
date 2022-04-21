@@ -70,7 +70,6 @@ public class LowestCommonAncestor236 {
      * @param q
      * @return
      */
-
     TreeNode ans = null;
     public TreeNode lowestCommonAncestor02(TreeNode root, TreeNode p, TreeNode q) {
 
@@ -81,13 +80,21 @@ public class LowestCommonAncestor236 {
 
     public  boolean  dfs02(TreeNode root,TreeNode p,TreeNode q){
        if (root==null) return false;
-        if(((root==p||root==q)&&(dfs02(root.left,p,q)||dfs02(root.right,p,q)))||(dfs02(root.left,p,q)&&dfs02(root.right,p,q))){
+       //加上这条语句，就可以让时间效率拉满
+       // 这条语句可以去除掉一些多余的判断逻辑，如果说结果已经有了，那再向上判断就没有必要了
+
+
+       if (ans!=null) return false;
+       boolean valLeft = dfs02(root.left,p,q);
+       boolean valRight = dfs02(root.right,p,q);
+        /**
+         * 这里其实基于一个点，就是如果一个点是最近公共祖先，那么其要么左右都为true
+         * 要么自己为p/q，而左右其一为true。并且，这样的结点只可能有一个点
+         */
+        if(((root==p||root==q)&&(valLeft||valRight))||(valLeft&&valRight)){
                 ans = root;
                 return  true;
         }
-        else if (root==q||root==p){
-            return true;
-        }
-        return  false;
+        return  root==p||root==q||valLeft||valRight;
     }
 }

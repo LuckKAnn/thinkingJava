@@ -144,4 +144,36 @@ public class OddEvenList328 {
 
        return oddHead;
     }
+
+    /**
+     * 官方写法
+     * @param head
+     * @return
+     */
+    public ListNode oddEvenListOffice(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+
+        //这种方式能够利用更少的指针，思路也更加的清晰
+        //直接仅仅利用两个位置，断链自然地生成
+        //odd利用首部，even利用首部的下一个
+        //每一次循环可以给odd.next和even.next都设置一个数
+        ListNode evenHead = head.next;
+        ListNode odd = head, even = evenHead;
+        while (even != null && even.next != null) {
+            //注意要先odd再even
+            //因为odd更新之后，odd就是原来even的下一个，再用odd.next就能拿到那个指针
+            //
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = odd.next;
+            even = even.next;
+        }
+        //这里也挺关键，不仅仅是为了满足题目的条件
+        //其实更是为了将最后odd的指针改变，否则其可能和even指向同一个
+        odd.next = evenHead;
+        return head;
+    }
+
 }
