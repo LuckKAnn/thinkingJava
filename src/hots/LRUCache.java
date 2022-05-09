@@ -1,52 +1,52 @@
 package hots;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class LRUCache {
 
-    private LinkedHashMap<Integer,Integer> datas = new LinkedHashMap<>();
-    int free = 0;
+    int cap;
+    LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
     public LRUCache(int capacity) {
-        free = capacity;
+        this.cap = capacity;
     }
 
     public int get(int key) {
-
-        if (datas.containsKey(key)){
-            int val = datas.get(key);
-            datas.remove(key);
-            datas.put(key,val);
-            return  val;
+        if (!cache.containsKey(key)) {
+            return -1;
         }
-        else  return -1;
+        // 将 key 变为最近使用
+        makeRecently(key);
+        return cache.get(key);
     }
 
-    public void put(int key, int value) {
-
-        if (datas.containsKey(key)){
-            datas.remove(key);
-            datas.put(key,value);
-        }
-        else{
-            if (free==0){
-//            如果没有空闲的空间，应该删除某尾的元素
-                Set<Integer> integers = datas.keySet();
-                int endKey = -1;
-                for (int k :integers){
-                    endKey=k;
-                    break;
-                }
-                datas.remove(endKey);
-                free++;
-            }
-            datas.put(key,value);
-            free--;
-
+    public void put(int key, int val) {
+        if (cache.containsKey(key)) {
+            // 修改 key 的值
+            cache.put(key, val);
+            // 将 key 变为最近使用
+            makeRecently(key);
+            return;
         }
 
+        if (cache.size() >= this.cap) {
+            // 链表头部就是最久未使用的 key
+            int oldestKey = cache.keySet().iterator().next();
+            cache.remove(oldestKey);
+        }
+        // 将新的 key 添加链表尾部
+        cache.put(key, val);
     }
+
+    private void makeRecently(int key) {
+        int val = cache.get(key);
+        // 删除 key，重新插入到队尾
+        cache.remove(key);
+        cache.put(key, val);
+    }
+
 
     public static void main(String[] args) {
         LRUCache lruCache = new LRUCache(2);
