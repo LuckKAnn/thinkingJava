@@ -29,15 +29,20 @@ public class ReorderList26 {
         }
 
         tmp = head;
+        boolean flag = false;
         while (tmp!=deque.peekLast()){
-            System.out.println(tmp.val);
             ListNode tmpNext = tmp.next;
             ListNode lst = deque.pollLast();
+            if(tmpNext ==lst){
+                flag = true;
+                lst.next=null;
+                break;
+            }
             tmp.next = lst;
             lst.next = tmpNext;
-            if (lst==tmpNext) break;
             tmp =tmpNext;
         }
-        tmp.next = null;
+        if (!flag) tmp.next = null;
+     //   if(tmp!=null) tmp.next = null;
     }
 }

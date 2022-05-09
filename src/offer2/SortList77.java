@@ -10,6 +10,10 @@ import java.util.List;
  * @Email: 1546165200@qq.com
  * @Date: 2022/4/21 9:54
  */
+
+/**
+ * LK:这道利用归并排序处理链表的问题很不错
+ */
 public class SortList77 {
     private static  class ListNode{
         int val;
@@ -75,6 +79,8 @@ public class SortList77 {
         ListNode dummyHead = new ListNode(0, head);
         /**
          * 归并排序的次数
+         * 先是1个1组，每2个进行归并，然后是2个一组，每2个进行归并
+         * 第一次完成22有序，第二次44有序，最后全部有序
          */
         for (int subLength = 1; subLength < length; subLength <<= 1) {
 
@@ -82,6 +88,7 @@ public class SortList77 {
             while (curr != null) {
                 //每次找到相邻的两组
                 ListNode head1 = curr;
+                //这里是确定了第一组的范围？
                 for (int i = 1; i < subLength && curr.next != null; i++) {
                     curr = curr.next;
                 }
@@ -121,6 +128,7 @@ public class SortList77 {
     public ListNode merge(ListNode head1, ListNode head2) {
         ListNode dummyHead = new ListNode(0);
         ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
+        //这里是在重新链接回去
         while (temp1 != null && temp2 != null) {
             if (temp1.val <= temp2.val) {
                 temp.next = temp1;
