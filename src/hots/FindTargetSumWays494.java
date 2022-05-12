@@ -34,4 +34,41 @@ public class FindTargetSumWays494 {
         dfs(nums,index+1,target,sum+nums[index]);
         dfs(nums,index+1,target,sum-nums[index]);
     }
+
+
+    /**
+     * 用01背包的动态规划方式来解决这道题
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWaysDynamic(int[] nums, int target) {
+
+        int sum= 0 ;
+        for(int num:nums) sum+=num;
+
+        int neg = (sum-target)/2;
+        int [][]dp = new int[nums.length+1][neg+1];
+
+
+        for (int i = 0; i <=nums.length; i++) {
+            for (int j = 0; j < neg; j++) {
+                if (i==0&&j==0) dp[i][j]=1;
+                else if(i==0) dp[i][j]=0;
+                else{
+                    if (nums[i]>j){
+//                        不能选择
+                        dp[i][j] = dp[i-1][j];
+                    }
+                    else{
+//                        可选可不选
+                        dp[i][j] = dp[i-1][j]+dp[i-1][j-nums[i]];
+                    }
+                }
+
+            }
+        }
+
+        return dp[nums.length][neg];
+    }
 }
