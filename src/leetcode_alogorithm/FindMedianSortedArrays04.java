@@ -6,8 +6,23 @@ package leetcode_alogorithm;
  * @Email: 1546165200@qq.com
  * @Date: 2022/5/12 10:29
  */
-public class FindMedianSortedArrays04 {
 
+/***
+ * 4. 寻找两个正序数组的中位数
+ * 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+ *
+ * 算法的时间复杂度应该为 O(log (m+n)) 。
+ *
+ *
+ */
+public class FindMedianSortedArrays04 {
+    /**
+     * 用类似于归并排序的方法去解决
+     * 时间复杂度是否同归并排序
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
         int mid = (nums1.length+nums2.length)/2;
