@@ -19,6 +19,10 @@ package hots;
 public class MaxProfit309 {
 
     /**
+     *
+     *
+     *
+     * LK 最佳买卖股票时机含冷冻期 系列五
      * 动态规划:
      * 该情况下，每一天结束时刻的状态有三种
      * 0. 当前持有股票(一定是不在冷冻期的)
@@ -30,17 +34,25 @@ public class MaxProfit309 {
      * 那么dp[i][0]=max(dp[i-1][0],dp[i-1][2]-prices[i])
      * dp[i][1] = dp[i-1][0]+prices[i]
      * dp[i][2] = max(dp[i-1][2],dp[i-1][1])
-     *
-     *
-     *
      * @param prices
      * @return
      */
     public int maxProfit(int[] prices) {
+        int lstHave = -prices[0];
+        int notIce = 0;
+        int notNotIce = 0 ;
 
+        int tmp1,tmp2,tmp3;
+        for (int i = 1; i < prices.length; i++) {
+            tmp1 = Math.max(lstHave,notNotIce-prices[i]);
+            tmp2 = lstHave+prices[i];
+            tmp3 = Math.max(notIce,notNotIce);
 
+            lstHave=tmp1;
+            notIce = tmp2;
+            notNotIce=tmp3;
+        }
 
-    return 0;
-
+    return Math.max(notIce,notNotIce);
     }
 }

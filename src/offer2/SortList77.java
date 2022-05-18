@@ -128,7 +128,7 @@ public class SortList77 {
     public ListNode merge(ListNode head1, ListNode head2) {
         ListNode dummyHead = new ListNode(0);
         ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
-        //这里是在重新链接回去
+        //归并
         while (temp1 != null && temp2 != null) {
             if (temp1.val <= temp2.val) {
                 temp.next = temp1;
@@ -144,6 +144,7 @@ public class SortList77 {
         } else if (temp2 != null) {
             temp.next = temp2;
         }
+        //这里是在重新链接回去
         return dummyHead.next;
     }
 

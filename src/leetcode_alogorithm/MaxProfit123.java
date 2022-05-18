@@ -25,6 +25,21 @@ public class MaxProfit123 {
      * @return
      */
     public int maxProfit(int[] prices) {
-        return 0;
+       int firstBuy = -prices[0];
+       int firstSell  = 0;
+       int sBuy = -prices[0];
+       int sSell = 0;
+
+
+        for (int i = 1; i < prices.length; i++) {
+
+            firstBuy = Math.max(firstBuy,-prices[i]);
+            firstSell = Math.max(firstSell,firstBuy+prices[i]);
+            sBuy = Math.max(sBuy,firstSell-prices[i]);
+            sSell = Math.max(sSell,sBuy+prices[i]);
+        }
+
+
+        return sSell;
     }
 }
