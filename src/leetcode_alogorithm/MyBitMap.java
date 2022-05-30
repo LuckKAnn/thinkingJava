@@ -6,6 +6,10 @@ package leetcode_alogorithm;
  * @Email: 1546165200@qq.com
  * @Date: 2021/11/15 17:40
  */
+
+/**
+ * LK BITMap的实现
+ */
 public class MyBitMap {
     byte[] bits ;
 

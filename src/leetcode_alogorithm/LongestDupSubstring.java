@@ -53,6 +53,7 @@ public class LongestDupSubstring {
         long power = 1;
         // 先计算前len个字符组成的子串的hash
         // 与java的String的hashCode()方法一样
+        //可以用乘10的思路来看
         for (int i = 0; i < len; i++) {
             hash = hash * PRIME + s.charAt(i);
             power *= PRIME;
@@ -63,6 +64,7 @@ public class LongestDupSubstring {
         // 滑动窗口向后移，每次移动要把移出窗口的减去，再加上新的
         for (int i = len; i < s.length(); i++) {
             //前缀和的思想**************************************
+            // 这个power相当于就是乘10的最高位，减去一个，新加一个
             hash = hash * PRIME + s.charAt(i) - power * s.charAt(i - len);
             // 如果包含相同的hash说明之前可能出现过相同的子串
             // 再检测一下从头查找相同的子串，它的位置不是当前 i 的位置，说明确实是相同的子串
@@ -76,6 +78,11 @@ public class LongestDupSubstring {
         }
 
         return ans;
+    }
+
+    public static void main(String[] args) {
+        LongestDupSubstring l = new LongestDupSubstring();
+        l.longestDupSubstring("banana");
     }
 
 }

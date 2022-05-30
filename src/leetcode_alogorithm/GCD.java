@@ -23,6 +23,7 @@ public class GCD {
     }
 
     public static void main(String[] args) {
+
         GCD gcd = new GCD();
         System.out.println(gcd.gcd(20, 8));
     }

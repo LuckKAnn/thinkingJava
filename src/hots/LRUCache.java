@@ -8,6 +8,8 @@ import java.util.Set;
 public class LRUCache {
 
     int cap;
+    //默认是按照插入的顺序来排列的，后插入的在队列的尾部
+    //还可以指定按照访问的顺序来排列
     LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
     public LRUCache(int capacity) {
         this.cap = capacity;

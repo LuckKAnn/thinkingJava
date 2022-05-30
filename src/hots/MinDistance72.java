@@ -30,8 +30,8 @@ public class MinDistance72 {
     int [][]cache;
     public int minDistance(String word1, String word2) {
         //重在这个二维缓存，缓存的信息同时和i和j都相关
+        cache = new int[word1.length()+1][word2.length()+1];
         min = Math.min(dfs(word1,word2,0,0),min);
-        cache = new int[word1.length()][word2.length()];
         return min;
 
     }
@@ -53,13 +53,16 @@ public class MinDistance72 {
         }
         //各种情况都去测试一下
         //插入
+        //相当于i前面插入了一个和j相同的元素，那么自然j要往后移动
         int insert = dfs(s,d,i,j+1)+1;
 
-        //删除
+        //删除，删除了当前的i，自然i向后移动
         int delete = dfs(s,d,i+1,j)+1;
-        //替换
+        //替换，完成了替换，都往后走
         int replace = dfs(s,d,i+1,j+1)+1;
+        //三者哪一步完成任务最快
         int min = Math.min(insert,Math.min(delete,replace));
+        //更新缓存
         cache[i][j] = min;
         return  min;
 

@@ -17,6 +17,7 @@ public class DailyTemperatures739 {
         //利用单调栈来解决每日问题这样的题目
         //需要注意的是Deque/LinkedList的pop和push方法,实现是从对头出入
         Deque<Integer> deque = new LinkedList<>();
+
         for (int i = temperatures.length-1;i>=0; i--) {
             while (!deque.isEmpty()&&temperatures[deque.getLast()]<=temperatures[i]){
                     deque.removeLast();

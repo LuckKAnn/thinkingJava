@@ -56,6 +56,7 @@ public class MaxProduct05 {
      List<Integer> list = new ArrayList<>();
         for (String str : words){
             int tmp = 0;
+            //表征含有某一个字符
             for (char c :str.toCharArray()){
                 tmp|=(1<<(c-'a'));
             }

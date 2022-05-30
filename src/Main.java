@@ -17,6 +17,11 @@ public class Main {
         Class<Main> mainClass = Main.class;
         System.out.println(mainClass.getPackageName());
         ByteBuffer.allocateDirect(10);
+        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
+
+        concurrentHashMap.get("yes");
+        ReentrantLock reentrantLock = new ReentrantLock(true);
+        reentrantLock.lock();
 
     }
 

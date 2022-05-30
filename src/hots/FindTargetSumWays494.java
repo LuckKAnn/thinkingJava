@@ -37,7 +37,7 @@ public class FindTargetSumWays494 {
 
 
     /**
-     * 用01背包的动态规划方式来解决这道题
+     * LK 用01背包的动态规划方式来解决这道题
      * @param nums
      * @param target
      * @return
@@ -53,8 +53,8 @@ public class FindTargetSumWays494 {
 
         for (int i = 0; i <=nums.length; i++) {
             for (int j = 0; j < neg; j++) {
-                if (i==0&&j==0) dp[i][j]=1;
-                else if(i==0) dp[i][j]=0;
+                if (i==0&&j==0) dp[i][j]=1;  //0个里面选0，是一种策略
+                else if(i==0) dp[i][j]=0;   //0个里面选出大于0，没有策略
                 else{
                     if (nums[i]>j){
 //                        不能选择

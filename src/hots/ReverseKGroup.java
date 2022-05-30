@@ -115,6 +115,7 @@ public class ReverseKGroup {
                 }
             }
             ListNode nex = tail.next;
+            //对这一部分进行翻转
             ListNode[] reverse = myReverse(head, tail);
             head = reverse[0];
             tail = reverse[1];

@@ -55,4 +55,38 @@ public class DetectCycle142 {
         return slow;
 
     }
+
+
+    /**
+     * 官方答案
+     * @param head
+     * @return
+     */
+    public ListNode detectCycleOffice(ListNode head) {
+        //先判断null
+        if (head == null) {
+            return null;
+        }
+
+        ListNode slow = head, fast = head;
+        while (fast != null) {
+            slow = slow.next;
+            //当下fast.next为null
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
+            if (fast == slow) {
+                ListNode ptr = head;
+                while (ptr != slow) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                }
+                return ptr;
+            }
+        }
+        return null;
+    }
+
 }

@@ -27,8 +27,10 @@ public class ThreeSumZero007 {
 
         for (int i = 0; i < nums.length-2; i++) {
             //提前结束的一些逻辑
+            //如果当前都大于0，那么之后的全都大于0，不可能和为0
             if (nums[i]>0) break;
             if (i>0&&nums[i]==nums[i-1]) continue;
+            //两边开始夹逼
             int low = i+1;
             int high = nums.length-1;
             while (low<high){
@@ -37,6 +39,7 @@ public class ThreeSumZero007 {
                     ans.add(Arrays.asList(nums[i],nums[low],nums[high]));
                     low++;
                     high--;
+                    //保证点不相同
                     while (high>low&&nums[high]==nums[high+1]) high--;
                     while (high>low&&nums[low]==nums[low-1]) low++;
                 }

@@ -33,17 +33,20 @@ public class Offer38 {
     void dfs(int x) {
         //这里其实是提前定位了一步？
         //如果前面已经确定，那么最后一位已经没有交换的空间，没必要再进行一次
-        //TODO:这里很精髓
+        //TODO:这里很精髓，用的不是说直接去记录每一位存储了什么，而是利用交换的方法来做
         if(x == c.length - 1) {
             res.add(String.valueOf(c));      // 添加排列方案
             return;
         }
+        //存储这一位放了什么元素
         HashSet<Character> set = new HashSet<>();
         for(int i = x; i < c.length; i++) {
+            //如果这一位放过相同的元素了，那么就不能再放
             if(set.contains(c[i])) continue; // 重复，因此剪枝
             set.add(c[i]);
             swap(i, x);                      // 交换，将 c[i] 固定在第 x 位
             dfs(x + 1);                      // 开启固定第 x + 1 位字符
+            //进行下一轮的循环之前，需要恢复原状
             swap(i, x);                      // 恢复交换
         }
     }

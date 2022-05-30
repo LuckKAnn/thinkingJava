@@ -39,6 +39,7 @@ public class LongestCommonSubsequence1143 {
                 }
                 else{
                     //这里相当于任意去删除一个字符？
+                    //应该先明白，dp[I][J]的含义，代表的是字符串1的0-i和字符串2的0-j能够组成的最长公共子序列
                     //dp[i][j+1]相当于删除text1的一个字符时，构成的最长子序列？
                     //dp[i+1][j]相当于删除text2的一个字符时，构成的最长子序列？
                     dp[i+1][j+1] = Math.max(dp[i][j+1],dp[i+1][j]);

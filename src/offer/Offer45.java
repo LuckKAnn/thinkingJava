@@ -18,6 +18,10 @@ public class Offer45 {
      *
      * 若拼接字符串 x + y > y + xx+y>y+x ，则 xx “大于” yy ；
      * 反之，若 x + y < y + xx+y<y+x ，则 xx “小于” yy ；
+     * 排序判断规则 为：
+     *
+     * 若拼接字符串 x + y >y+x ，则 x “大于” y ；
+     * 反之，若 x + y <y+x ，则 x “小于” y ；
      * @param nums
      * @return
      */
@@ -27,7 +31,10 @@ public class Offer45 {
             list.add(String.valueOf(num));
         }
 
-        Collections.sort(list,(o1,o2)->(o1+o2).compareTo(o2+o1));
+        //Collections.sort(list,(o1,o2)->(o1+o2).compareTo(o2+o1));
+        Collections.sort(list,(o1,o2)->{
+            return  (o1+o2).compareTo(o2+o1);
+        });
 
         StringBuilder sb = new StringBuilder();
         for (String s :list){
