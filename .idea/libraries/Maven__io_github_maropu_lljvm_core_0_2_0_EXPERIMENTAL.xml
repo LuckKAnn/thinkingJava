@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.github.maropu:lljvm-core:0.2.0-EXPERIMENTAL">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../codewrite/maven354/apache-maven-3.5.4/repo/io/github/maropu/lljvm-core/0.2.0-EXPERIMENTAL/lljvm-core-0.2.0-EXPERIMENTAL.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../../../codewrite/maven354/apache-maven-3.5.4/repo/io/github/maropu/lljvm-core/0.2.0-EXPERIMENTAL/lljvm-core-0.2.0-EXPERIMENTAL-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../../codewrite/maven354/apache-maven-3.5.4/repo/io/github/maropu/lljvm-core/0.2.0-EXPERIMENTAL/lljvm-core-0.2.0-EXPERIMENTAL-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
