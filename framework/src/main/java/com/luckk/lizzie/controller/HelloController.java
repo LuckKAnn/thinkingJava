@@ -1,5 +1,6 @@
 package com.luckk.lizzie.controller;
 
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String Hello(){
+
         return "6666";
     }
 }

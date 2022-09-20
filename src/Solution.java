@@ -22,10 +22,17 @@ import java.util.function.IntUnaryOperator;
  */
 
 public class Solution {
-
-
     public static void main(String[] args) {
-        HashMap<String, String>mp = new HashMap<>();
+
+        int [] arr = {1,2,3,4};
+        Comparator<Integer> cmp = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        };
+
+
     }
 
 }
