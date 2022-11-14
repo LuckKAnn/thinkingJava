@@ -22,17 +22,36 @@ import java.util.function.IntUnaryOperator;
  */
 
 public class Solution {
-    public static void main(String[] args) {
+    static ArrayList<List<String>> arrayList = new ArrayList<>();
 
-        int [] arr = {1,2,3,4};
-        Comparator<Integer> cmp = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1-o2;
+    static {
+        for (int i = 0; i <= 10; i++) {
+            arrayList.add(new ArrayList<>());
+        }
+
+
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 60; j++) {
+                for (int k = 0; k <= 10; k++) {
+                    if (Integer.bitCount(i) + Integer.bitCount(j) == k) {
+                        if (j < 10) {
+                            arrayList.get(k).add("" + i + ":0" + j);
+                        } else {
+                            arrayList.get(k).add("" + i + ":" + j);
+                        }
+                    }
+                }
             }
-        };
-
-
+        }
     }
 
+    public List<String> readBinaryWatch(int turnedOn) {
+        return arrayList.get(turnedOn);
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.readBinaryWatch(5));
+    }
 }
