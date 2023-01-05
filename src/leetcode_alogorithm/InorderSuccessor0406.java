@@ -1,6 +1,5 @@
 package leetcode_alogorithm;
 
-import com.sun.source.tree.Tree;
 
 /**
  * @FileName: InorderSuccessor0406
