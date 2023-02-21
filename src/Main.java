@@ -11,40 +11,49 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
-    public static void main(String[] args) {
-        int []arr = {1,5,6,3,7,8,9,10,55};
-        System.out.println("hello world");
-        mergeSort(arr, 0, arr.length-1);
-        System.out.println(Arrays.toString(arr));
-    }
-    public static void mergeSort(int []arr,int start,int end){
-        if(start==end || end<start) return;
-        int mid = start+(end-start)/2;
-        mergeSort(arr, start, mid);
-        mergeSort(arr, mid+1, end);
-        swap(arr, start, mid, mid+1, end);
-    }
-    public static void swap(int []arr,int low,int lowEnd,int high,int highEnd ){
-        int []tmp = new int[highEnd-low+1];
-        int tmpIndex = 0;
-        int tmpLow = low;
-        int tmpHigh = highEnd;
-        while(low<=lowEnd && high<=highEnd){
-            if(arr[low] < arr[high]){
-                tmp[tmpIndex++] = arr[low++];
-            } else{
-                tmp[tmpIndex++] = arr[high++];
-            }
-        }
-        while(low<=lowEnd){
-            tmp[tmpIndex++] = arr[low++];
-        }
-        while(high<=highEnd){
-            tmp[tmpIndex++] = arr[high++];
-        }
-
-        for(int i=tmpLow,j=0;i<tmpHigh;i++,j++){
-            arr[i] = tmp[j];
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            int n = 0,m = 0,k = 0, sum = 0;
+            n = scan.nextInt();
+            m = scan.nextInt();
+            k = scan.nextInt();
+            int[] num = new int[n];
+            Arrays.fill(num,1);
+            sum = (n-1)*(m-1);
+            if (sum < k) System.out.println(-1);
+            else {
+                int i = 0;
+                sum = 0;
+                while (sum < k && i < n) {
+                    if(i % 2 == 1) {
+                        num[i] = m;
+                        sum = 2 * (m - 1) + sum;
+                    }
+                    i++;
+                }
+                if (k % 2 ==0) {
+                    while (sum != k) {
+                        num[i - 1] = num[i - 1] - 1;
+                        sum = sum - 2;
+                        if (num[i - 1] == 1) i = i - 2;
+                    }
+                }else {
+                    while (sum != k+1) {
+                        num[i - 1] = num[i - 1] - 1;
+                        sum = sum - 2;
+                        if (num[i - 1] == 1) i = i - 2;
+                    }
+                    num[0] = num[0] + 1;
+                }
+//            //验算
+//            sum = 0;
+//            for (int j = 1; j < n; j++) {
+//                sum += Math.abs(num[j]-num[j-1]);
+//            }
+//            System.out.println(sum);
+                for (int j = 0; j < n; j++) {
+                    System.out.print(num[j] + " ");
+                }
         }
     }
 
