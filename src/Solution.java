@@ -14,7 +14,6 @@ import java.util.function.IntFunction;
 import java.util.function.IntUnaryOperator;
 
 
-
 /**
  * @author : LuckKAnn
  * @date : 9:43 PM 7/5/2021
@@ -22,36 +21,8 @@ import java.util.function.IntUnaryOperator;
  */
 
 public class Solution {
-    static ArrayList<List<String>> arrayList = new ArrayList<>();
-
-    static {
-        for (int i = 0; i <= 10; i++) {
-            arrayList.add(new ArrayList<>());
-        }
-
-
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 60; j++) {
-                for (int k = 0; k <= 10; k++) {
-                    if (Integer.bitCount(i) + Integer.bitCount(j) == k) {
-                        if (j < 10) {
-                            arrayList.get(k).add("" + i + ":0" + j);
-                        } else {
-                            arrayList.get(k).add("" + i + ":" + j);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public List<String> readBinaryWatch(int turnedOn) {
-        return arrayList.get(turnedOn);
-    }
-
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.readBinaryWatch(5));
     }
 }
